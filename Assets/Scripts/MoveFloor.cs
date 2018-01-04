@@ -10,6 +10,8 @@ public class MoveFloor : MonoBehaviour {
     [SerializeField]
     float speed;
 
+    [SerializeField]
+    int waitTime;
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +25,8 @@ public class MoveFloor : MonoBehaviour {
             foreach (var point in movePoints)
             {
 
+                yield return new WaitForSeconds(waitTime);
+
                 while ((point.transform.position - transform.position).magnitude > speed*Time.deltaTime)
                 {
                     transform.position+= (point.transform.position - transform.position).normalized * speed*Time.deltaTime;
@@ -30,6 +34,7 @@ public class MoveFloor : MonoBehaviour {
                 }
 
             }
+
         }
     }
 }
