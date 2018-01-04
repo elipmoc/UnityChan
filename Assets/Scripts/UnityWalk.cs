@@ -20,6 +20,8 @@ public class UnityWalk : MonoBehaviour {
     private CameraTarget cameraTarget;
     private Vector3 restartPosition;
     private bool jumpFlag=false;
+    [SerializeField]
+    private float jumpForce;
 
     private Transform defaultParent;
     private Vector3 defaultScale;
@@ -96,7 +98,7 @@ public class UnityWalk : MonoBehaviour {
     {
         animator.SetBool("Jump", false);
 
-        rig.AddForce(new Vector3(0, 20, 0)+transform.forward, ForceMode.Impulse);
+        rig.AddForce(new Vector3(0, jumpForce, 0)+transform.forward, ForceMode.Impulse);
     }
 
     void OnJumpStart()
