@@ -6,21 +6,21 @@ using UnityEngine;
 public class PlayerActionGUI : MonoBehaviour {
     [SerializeField]
     private GameObject image;
+    private GameObject actionObject=null;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
 	// Update is called once per frame
 	void Update () {
-		
+		if(actionObject!=null&& Input.GetKeyDown(KeyCode.F))
+        {
+            actionObject.GetComponent<PlayerActionReceiver>().OnAction();
+        }
 	}
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "PlayerActionObject")
         {
+            actionObject = collision.gameObject;
             image.SetActive(true);
         }
     }
@@ -29,6 +29,7 @@ public class PlayerActionGUI : MonoBehaviour {
     {
         if (collision.gameObject.tag == "PlayerActionObject")
         {
+            actionObject = null;
             image.SetActive(false);
         }
     }
