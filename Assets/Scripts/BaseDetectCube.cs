@@ -7,6 +7,11 @@ public abstract class BaseDetectCube : MonoBehaviour {
     [SerializeField]
     private Material material;
 
+    private void Start()
+    {
+        material.color = Color.blue;
+    }
+
     public virtual void On()
     {
         material.color = Color.red;

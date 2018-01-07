@@ -122,7 +122,7 @@ public class UnityWalk : MonoBehaviour {
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "MoveStage")
+        if (collision.gameObject.tag == "MoveStage" && collision.gameObject.GetInstanceID()==transform.parent.gameObject.GetInstanceID())
         {
             transform.SetParent(defaultParent);
             transform.localScale = defaultScale;

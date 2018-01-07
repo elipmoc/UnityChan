@@ -6,6 +6,11 @@ public class CreateFloorDetect :BaseDetectCube {
     [SerializeField]
     private List<GameObject> floorList;
 
+    private void Start()
+    {
+        floorList.ForEach(x=>x.SetActive(false));
+    }
+
     public override void On()
     {
         base.On();
