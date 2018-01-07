@@ -8,6 +8,7 @@ public class CreateFloorDetect :BaseDetectCube {
 
     private void Start()
     {
+        base.Start();
         floorList.ForEach(x=>x.SetActive(false));
     }
 
