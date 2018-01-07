@@ -7,15 +7,20 @@ public class DetectSide : MonoBehaviour {
 
     [SerializeField]
     private BaseDetectCube detectCube;
+    private int detectCount = 0;
 
     private void OnTriggerEnter(Collider other)
     {
-        detectCube.On();
+        if(detectCount==0)
+            detectCube.On();
+        detectCount++;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        detectCube.Off();
+        detectCount--;
+        if(detectCount==0)
+            detectCube.Off();
     }
 
 }
